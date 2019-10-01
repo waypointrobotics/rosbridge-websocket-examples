@@ -2,7 +2,7 @@ from robot_driver import MyRosbridgeClient
 import time
 
 try:
-    my_websocket_client = MyRosbridgeClient('ws://35.188.228.188:9090/')
+    my_websocket_client = MyRosbridgeClient('ws://127.0.0.1:9090/')  # Change this IP address and port as needed
     my_websocket_client.connect()
 
 
@@ -16,7 +16,7 @@ try:
     print("Navigation Succeeded: "+str(my_websocket_client.navigation_succeeded))
     
     """ Starting a mission/program"""
-    #my_websocket_client.start_mission('start_nayan_x_3')
+    #my_websocket_client.start_mission('my_mission')
     
 
     """ Current approximate robot position can be queried directly like this: """
@@ -37,7 +37,7 @@ try:
     """ The robot's battery level is available on the battery_level attribute. """
     print(my_websocket_client.battery_level)
 
-    """ The mission_is_running attribute keeps track of mission starts and finishes (this is experimental, do not use for production) """
+    """ The mission_is_running attribute keeps track of mission starts and finishes (this is just a rudimentary example, do not use for production) """
     #timeout = 0
     #while my_websocket_client.mission_is_running and timeout < 15:
     #    time.sleep(1)
