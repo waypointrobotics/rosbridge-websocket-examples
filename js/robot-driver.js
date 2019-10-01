@@ -30,11 +30,11 @@ BAREBONEEXAMPLES.RobotDriver = function(options){
                 }
                 break;
             case 'publish':
-                this.ws.robotLocation.y = received_message.msg.position.y;
-                this.ws.robotLocation.x = received_message.msg.position.x;
-                Console.log('Coordinates received. console.log(ws.robotLocation):')
-                Console.log(ws.robotLocation);
-                this.ws.queryPosition(false);
+                that.robotLocation.y = received_message.msg.position.y;
+                that.robotLocation.x = received_message.msg.position.x;
+                console.log('Coordinates received: ')
+                console.log(that.robotLocation);
+                that.queryPosition(false);
         }
     });
     
