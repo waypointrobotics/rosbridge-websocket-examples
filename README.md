@@ -17,4 +17,3 @@ Inspired by
 https://github.com/Sanic/ROSBridgeTestclient 
 and this answer:
 https://answers.ros.org/question/40020/thin-clients-communicating-with-ros/
-
