@@ -6,7 +6,10 @@ For script examples, look at go-to-named-waypoint.js or go-to-coordinates.js
 
 For interactive control in the nodejs REPL, you can do the following:
 
-``const driver = require('./robot-driver')``
+``const EXAMPLES = require('./robot-driver')``
+
+``var driver = new EXAMPLES.RobotDriver({ip: <your server's IP>, port: '9090'})``
+
 
 This will establish the connection with the server and make the  example's methods available.
 

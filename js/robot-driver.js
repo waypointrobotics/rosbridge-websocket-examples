@@ -1,8 +1,14 @@
 const WebSocket = require('ws');   // sudo npm i ws
 
-var RobotDriver = function(){
+var BAREBONEEXAMPLES = this.BAREBONEEXAMPLES || {
+    REVISION : '0.0.0'
+  };
+
+BAREBONEEXAMPLES.RobotDriver = function(options){
+    this.serverIP = options.ip || '127.0.0.1';
+    this.port     = options.port || '9090';
     that = this;
-    this.ws = new WebSocket('ws://35.199.36.232:9090');    
+    this.ws = new WebSocket('ws://'+this.serverIP+':'+this.port);    
     this.robotLocation = {x: null, y: null};    
 
     this.ws.on('open', function open() {
@@ -39,21 +45,21 @@ var RobotDriver = function(){
 
 }
 
-RobotDriver.prototype.goToWaypoint = function(waypointName){
+BAREBONEEXAMPLES.RobotDriver.prototype.goToWaypoint = function(waypointName){
     let request_coordinates_msg ={"op":"call_service","service":"/waypoint_db/retrieve_waypoint","args":{"waypointName": waypointName}};
     this.ws.send(JSON.stringify(request_coordinates_msg));
 }
 
 
 
-RobotDriver.prototype.runMission = function(missionName){
+BAREBONEEXAMPLES.RobotDriver.prototype.runMission = function(missionName){
     let request_mission_msg ={"op":"call_service","service":"/mission_control/run_mission_from_file","args":{"request":missionName}};
     this.ws.send(JSON.stringify(request_mission_msg));
 };
 
 
 
-RobotDriver.prototype.publishGoal = function(msg){
+BAREBONEEXAMPLES.RobotDriver.prototype.publishGoal = function(msg){
     waypoint_coordinates  = JSON.parse(msg);
     x_coordinate = waypoint_coordinates.values.response.x;
     y_coordinate = waypoint_coordinates.values.response.y;
@@ -67,7 +73,7 @@ RobotDriver.prototype.publishGoal = function(msg){
     this.ws.send(JSON.stringify(pose_message));
 }
 
-RobotDriver.prototype.cancelGoal = function(){
+BAREBONEEXAMPLES.RobotDriver.prototype.cancelGoal = function(){
     console.log('trying to cancel goal');
     let pose_message =  {"op": "publish",
     "topic": "/move_base_navi/cancel",
@@ -77,12 +83,12 @@ RobotDriver.prototype.cancelGoal = function(){
     this.ws.send(JSON.stringify(pose_message));
 }
 
-RobotDriver.prototype.stopLoop = function(){
+BAREBONEEXAMPLES.RobotDriver.prototype.stopLoop = function(){
     let stopLoopMsg ={"op":"call_service","service":"/mission_control/stop_mission_file","args":{"request":""}};
     this.ws.send(JSON.stringify(stopLoopMsg));
 };
 
-RobotDriver.prototype.queryPosition = function(onOff){
+BAREBONEEXAMPLES.RobotDriver.prototype.queryPosition = function(onOff){
     let op = "subscribe";
     if(onOff===false){
         op="unsubscribe";
@@ -93,4 +99,4 @@ RobotDriver.prototype.queryPosition = function(onOff){
     this.ws.send(JSON.stringify(pose_subscribe_message));
 }
 
-module.exports = new RobotDriver();
+module.exports = BAREBONEEXAMPLES;
