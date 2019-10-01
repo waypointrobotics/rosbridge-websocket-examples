@@ -4,7 +4,7 @@ A few examples on how to control a robot over raw javascript websockets.
 
 For script examples, look at go-to-named-waypoint.js or go-to-coordinates.js
 
-For interactive control in the nodejs repl, you can do the following:
+For interactive control in the nodejs REPL, you can do the following:
 
 ``const driver = require('./robot-driver')``
 
