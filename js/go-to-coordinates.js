@@ -1,6 +1,5 @@
 const WebSocket = require('ws');   // sudo npm i ws
-
-const ws = new WebSocket('ws://35.188.228.188:9090');
+const ws = new WebSocket('ws://127.0.0.1:9090');  // replace IP and port if necessary
 
 
 ws.on('open', function open() {
