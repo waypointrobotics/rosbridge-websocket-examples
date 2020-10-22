@@ -61,10 +61,10 @@ BAREBONEEXAMPLES.RobotDriver.prototype.runMission = function(missionName){
 
 BAREBONEEXAMPLES.RobotDriver.prototype.publishGoal = function(msg){
     waypoint_coordinates  = JSON.parse(msg);
-    x_coordinate = waypoint_coordinates.values.response.x;
-    y_coordinate = waypoint_coordinates.values.response.y;
-    z_coordinate = waypoint_coordinates.values.response.z;
-    w_coordinate = waypoint_coordinates.values.response.w;
+    x_coordinate = waypoint_coordinates.values.pose.position.x;
+    y_coordinate = waypoint_coordinates.values.pose.position.y;
+    z_coordinate = waypoint_coordinates.values.pose.orientation.z;
+    w_coordinate = waypoint_coordinates.values.pose.orientation.w;
     let pose_message =  {"op": "publish",
                         "topic": "/move_base_navi_simple/goal",
                         "msg":{ "header": {"frame_id": "map"},
