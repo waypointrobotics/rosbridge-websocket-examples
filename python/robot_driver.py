@@ -65,10 +65,11 @@ class MyRosbridgeClient(WebSocketClient):
             if message['service'] == '/mission_control/stop_mission_file':
                 print('Mission Stopped')
             elif message['service'] == '/waypoint_db/retrieve_waypoint':
-                x_coordinate = message['values']['response']['x']
-                y_coordinate = message['values']['response']['y']
-                z_coordinate = message['values']['response']['z']
-                w_coordinate = message['values']['response']['w']
+                print(message)
+                x_coordinate = message['values']['pose']['position']['x']
+                y_coordinate = message['values']['pose']['position']['y']
+                z_coordinate = message['values']['pose']['orientation']['z']
+                w_coordinate = message['values']['pose']['orientation']['w']
                 self.waypoint_coordinates_x = x_coordinate
                 self.waypoint_coordinates_y = y_coordinate
                 self.coordinates_message_received = True                
