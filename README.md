@@ -1,6 +1,8 @@
 # rosbridge-websocket-examples
 A set of bare-bones examples mini-drivers to control a mobile robot using rosbridge over websockets.
 
+**Note**: If using with a Waypoint Robotics robot such as Vector or Mavek, make sure that the robot is in navigation mode and localized before issuing navigation goals
+
 For Python example, see python folder.
 for Javascript example, see js folder.
 
@@ -17,3 +19,4 @@ Inspired by
 https://github.com/Sanic/ROSBridgeTestclient 
 and this answer:
 https://answers.ros.org/question/40020/thin-clients-communicating-with-ros/
+
