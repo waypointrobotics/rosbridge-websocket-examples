@@ -1,9 +1,17 @@
 const WebSocket = require('ws');   // sudo npm i ws
 const ws = new WebSocket('ws://127.0.0.1:9090'); // replace IP and port if necessary
 
+/*
+
+This example is meant to be run using Node JS 
+This example will tell the robot to navigate to a waypoint called "Loading Dock"
+Before running this example, create that waypoint with that exact name using Dispatcher.
+
+*/
+
 ws.on('open', function open() {
     console.log('New connection');
-    let request_coordinates_msg ={"op":"call_service","service":"/waypoint_db/retrieve_waypoint","args":{"waypointName": "A"}};
+    let request_coordinates_msg ={"op":"call_service","service":"/waypoint_db/retrieve_waypoint","args":{"waypointName": "Loading Dock"}};
     ws.send(JSON.stringify(request_coordinates_msg));
 });
 

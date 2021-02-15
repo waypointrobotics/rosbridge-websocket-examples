@@ -7,6 +7,8 @@ try:
 
 
     # This is an example script, uncomment relevant lines to try different functions
+    # In this example, the robot will attempt to navigate to a waypoint called "Start"
+    # Add a waypoint with that exact name using Dispatcher (or modify this example) before running it. 
 
     """ Sending the robot to a waypoint:"""
     my_websocket_client.subscribe_to_navigation_result()

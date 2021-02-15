@@ -95,6 +95,7 @@ BAREBONEEXAMPLES.RobotDriver.prototype.queryPosition = function(onOff){
     }
     let pose_subscribe_message =  {"op": op,
         "topic": "/robot_pose",
+        "queue_length": 1  // IMPORTANT: Always specify this parameter when subscribing, or it will default to zero and cause problems.
         };  
     this.ws.send(JSON.stringify(pose_subscribe_message));
 }

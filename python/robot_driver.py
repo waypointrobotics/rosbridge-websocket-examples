@@ -110,15 +110,24 @@ class MyRosbridgeClient(WebSocketClient):
         self.send(dumps(msg))
 
     def subscribe_to_robot_pose(self):
-        msg = {"op": "subscribe", "topic": "/robot_pose"}
+        msg = {"op": "subscribe",
+            "topic": "/robot_pose",
+            "queue_length": 1  #IMPORTANT: Always specify this parameter when subscribing, or it will default to zero and cause problems.
+         }
         self.send(dumps(msg))
 
     def subscribe_to_navigation_result(self):
-        msg = {"op": "subscribe", "topic": "/move_base_navi/result"}
+        msg = {"op": "subscribe",
+            "topic": "/move_base_navi/result",
+            "queue_length": 1  #IMPORTANT: Always specify this parameter when subscribing, or it will default to zero and cause problems.
+        }
         self.send(dumps(msg))
 
     def subscribe_to_battery_level(self):
-        msg = {"op": "subscribe", "topic": "/waypoint/aux_battery_soc"}
+        msg = {"op": "subscribe",
+            "topic": "/waypoint/aux_battery_soc",
+            "queue_length": 1  #IMPORTANT: Always specify this parameter when subscribing, or it will default to zero and cause problems.
+        }
         self.send(dumps(msg))
 
     def request_waypoint_coordinates(self, waypoint_name):
@@ -138,7 +147,10 @@ class MyRosbridgeClient(WebSocketClient):
         return self.waypoint_coordinates_x, self.waypoint_coordinates_y
 
     def listen_for_mission_finish_message(self):
-        msg = {"op": "subscribe", "topic": "/mission_control/program_status"}
+        msg = {"op": "subscribe",
+            "topic": "/mission_control/program_status",
+            "queue_length": 1  #IMPORTANT: Always specify this parameter when subscribing, or it will default to zero and cause problems.
+        }
         self.send(dumps(msg))
 
     def set_digital_output(self, digital_output_name, digital_output_desired_state):
