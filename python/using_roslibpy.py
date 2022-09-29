@@ -1,9 +1,9 @@
 """
 In this example, we use roslibpy to request the execution of a 
-program created in Dispatcher (the robot's GUI) and saved with
-under the name 'helloworld'.
+program previously created in Dispatcher (the robot's GUI) and
+saved under the name 'helloworld'.
 
-Modify this exaple to request the execution of your own programs.
+Modify this example to request the execution of your own programs.
 
 """
 
